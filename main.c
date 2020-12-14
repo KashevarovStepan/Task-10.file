@@ -66,18 +66,15 @@ char findLw(char*lw,char*s)
 
 void dellw(char*s,char*r,char*lw)
 {
-    char*word=strtok(s,lw);
-    r[0]='\0';
-    strcat(r,word);
+    int i=0,len=strlen(lw);
+    char*word=strstr(s,lw);
+    r[i]='\0';
     do
     {
-        word=strtok('\0',lw);
-        if(word)
-        {
-
-            strcat(r,word);
-        }
-    }while(word);
+        for(i=0;i<len;i++)word[i]=' ';
+        word=strstr(s,lw);
+    }while(word!=NULL);
+    strcat(r,s);
 }
 
 int main()
@@ -106,7 +103,6 @@ int main()
     strcat(pw,lw);
     strcat(pw," ");
     dellw(s,s3,pw);
-    puts(s3);
     delsp(s3,s);
     strcpy(s3,s);
     puts(s3);
